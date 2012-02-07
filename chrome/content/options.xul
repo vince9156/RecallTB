@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<!DOCTYPE prefwindow SYSTEM "chrome://recall_ext/locale/options.dtd">
+<prefwindow id="recall_ext-preferences" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" title="&prefwindow.title;">
+  <prefpane id="pane1" label="&pane1.title;">
+    <preferences>
+      <preference id="calpref" name="extensions.recall_ext.calpref" type="int"/>
+      <preference id="cleanup" name="extensions.recall_ext.cleanup" type="int"/>
+      <preference id="stringpref1" name="extensions.recall_ext.stringpref" type="string"/> <!-- note that this is only an ASCII string - use unichar for unicode strings -->
+    </preferences>
+    <groupbox>
+    <caption label="&addToCalendarAs;"/>
+    <radiogroup preference="calpref">
+    <radio value="0" label="&event;"/>
+    <radio value="1" label="&task;"/>
+    </radiogroup>
+    </groupbox>
+  </prefpane>
+</prefwindow>

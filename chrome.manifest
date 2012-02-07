@@ -1,0 +1,6 @@
+content   recall_ext                 chrome/content/
+locale    recall_ext   en-US         chrome/locale/en-US/
+locale    recall_ext   fr-FR         chrome/locale/fr-FR/
+
+
+overlay chrome://messenger/content/messenger.xul chrome://recall_ext/content/button.xul

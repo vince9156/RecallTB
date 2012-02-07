@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE wizard SYSTEM "chrome://recall_ext/locale/setup_wizard.dtd">
+
+<wizard id="setup-wizard" title="&setup; RecallTB_SI" xmlns:html="http://www.w3.org/1999/xhtml"
+ xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onwizardfinish="return follow_up_setupwizard.setupComplete();">
+  
+  <script type="application/javascript" src="chrome://recall_ext/content/setup_wizard.js"/>
+  <script type="application/javascript" src="chrome://recall_ext/content/lightning.js"/>
+  
+  <wizardpage title="&setup;">
+    <spacer flex="1"/>
+    <label>&wizTitLab;</label>
+    <spacer flex="2"/>
+  </wizardpage>
+
+  <wizardpage label="&step; 1">
+	<description>
+      &wizSt1Desc;
+    </description>
+    <radiogroup>
+    	<radio value="default" label="&default;"/>
+    </radiogroup>
+    <spacer flex="2"/>
+    <label>&wizSt1Lab;</label>
+    <spacer flex="1"/>
+  </wizardpage>
+  
+  <wizardpage label="&step; 2">
+	<description>
+      &wizSt2Desc;
+    </description>
+    <radiogroup id="calItem">
+    	<radio value="0" label="&event;"/>
+    	<radio value="1" label="&task;"/>
+    </radiogroup>
+    <spacer flex="2"/>
+    <label>&wizSt1Lab;</label>
+    <spacer flex="1"/>
+  </wizardpage>
+  
+  <wizardpage label="&step; 3">
+	<description>
+     &wizSt3Desc;
+    </description>
+    <spacer flex="1"/>
+    <label>&wizSt3Lab1;</label>
+    <spacer flex="1"/>
+    <label>&wizSt3Lab2;</label>
+    <spacer flex="1"/>
+    <label>&wizSt3Lab3;</label>
+    <spacer flex="2"/>
+  </wizardpage>
+</wizard>

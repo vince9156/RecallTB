@@ -1,0 +1,8 @@
+<!ENTITY recall_ext.label "Your localized menuitem">
+<!ENTITY recall_extContext.label "Your Menuitem">
+<!ENTITY recall_extContext.accesskey "Y">
+<!ENTITY recall_extToolbarButton.label "Your Toolbar Button">
+<!ENTITY recall_extToolbarButton.tooltip "This is your toolbar button!">
+<!ENTITY recall_extSidebar.label "Your Sidebar">
+<!ENTITY recall_extToolbar.name  "exemple">
+<!ENTITY recall_extToolbar.label "Ceci est un exemple de barre d'outils. You can hide it under View &gt; toolbars &gt; &recall_extToolbar.name;">

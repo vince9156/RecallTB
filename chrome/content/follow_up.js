@@ -43,12 +43,18 @@ Components.utils.import("resource://gre/modules/FileUtils.jsm");
 		var elem = params.out;
 		elem = elem.split('|');
 		var date = new Date(elem[0]);
+		var days = elem[1];
+		
     	
 		//create the tag.
         var d;
         if(this.isValidDate(date) == true)
     	{
-			d = "Follow Up: " + date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
+			alert(elem[1]);
+			if(elem[1]!="")
+				d = "Follow Up: " + (date.getDate()+parseInt(elem[1])) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
+			else
+				d = "Follow Up: " + date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
 			if (!recall_ext.tagService.getKeyForTag(d))
         	{
         		recall_ext.tagService.addTag(d, "#33CC00", "");
@@ -75,7 +81,6 @@ Components.utils.import("resource://gre/modules/FileUtils.jsm");
   	//create event / task in the calendar.
     if (recall_ext.prefs.getIntPref("extensions.recall_ext.calpref") == 0)
     {
-    	alert(date);
 		follow_up_calendar.addEvent(date,status);
     }
     else

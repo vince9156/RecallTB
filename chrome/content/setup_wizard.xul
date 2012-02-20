@@ -24,6 +24,7 @@
     </radiogroup>
     <spacer flex="2"/>
     <label>&wizSt1Lab;</label>
+	<a href="&wisSt1Lk;">&wisSt1Lab2;</a>
     <spacer flex="1"/>
   </wizardpage>
   

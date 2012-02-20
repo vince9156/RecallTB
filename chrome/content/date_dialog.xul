@@ -19,10 +19,9 @@
 	  </vbox>
 	  <hbox>
 		<label value="&Time;"/>  
-		<textbox id="hour" value="" width="20px" />
-		<label value="&Hour;"/>  
-		<textbox id="min" value="" width="20px"/>
-		<label value="&Min;"/>  
+		<textbox id="day" value="" width="20px" />
+		<label value="&days;"/>  
+		
 	  </hbox>
    </groupbox>
 </dialog>

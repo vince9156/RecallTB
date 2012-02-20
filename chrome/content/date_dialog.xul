@@ -13,7 +13,16 @@
     
     <dialogheader title="&dateOption;" description="&selectDateBelow;"/>
     <groupbox>
-      <caption label="&followUpOn;"/>
-      <datepicker id="selDate" type="grid" />
+      <vbox>
+		<caption label="&followUpOn;"/>
+		<datepicker id="selDate" type="grid" />
+	  </vbox>
+	  <hbox>
+		<label value="&Time;"/>  
+		<textbox id="hour" value="" width="20px" />
+		<label value="&Hour;"/>  
+		<textbox id="min" value="" width="20px"/>
+		<label value="&Min;"/>  
+	  </hbox>
    </groupbox>
 </dialog>

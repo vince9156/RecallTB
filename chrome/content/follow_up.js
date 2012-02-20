@@ -35,16 +35,21 @@ Components.utils.import("resource://gre/modules/FileUtils.jsm");
   	//open the datepicker window.
   	var params = { out: null };
     window.openDialog("chrome://recall_ext/content/date_dialog.xul", "", "modal", params).focus();
-    //if a date was selected by the user.
+	
+	//if a date was selected by the user.
     if (params.out != null) 
     {
-    	var date = params.out;
-    	//create the tag.
+		//var date = params.out;
+		var elem = params.out;
+		elem = elem.split('|');
+		var date = new Date(elem[0]);
+    	
+		//create the tag.
         var d;
         if(this.isValidDate(date) == true)
     	{
-    		d = "Follow Up: " + date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
-    		if (!recall_ext.tagService.getKeyForTag(d))
+			d = "Follow Up: " + date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
+			if (!recall_ext.tagService.getKeyForTag(d))
         	{
         		recall_ext.tagService.addTag(d, "#33CC00", "");
         	}
@@ -62,6 +67,7 @@ Components.utils.import("resource://gre/modules/FileUtils.jsm");
         	this.addItemtoCalendar(date,follow_up_calendar.PENDING);
     	}
     }
+	
   },
   
   addItemtoCalendar : function(date,status)
@@ -69,7 +75,8 @@ Components.utils.import("resource://gre/modules/FileUtils.jsm");
   	//create event / task in the calendar.
     if (recall_ext.prefs.getIntPref("extensions.recall_ext.calpref") == 0)
     {
-    	follow_up_calendar.addEvent(date,status);
+    	alert(date);
+		follow_up_calendar.addEvent(date,status);
     }
     else
     {

@@ -4,3 +4,6 @@
 <!ENTITY dateOption "Option de la date">
 <!ENTITY followUpOn "Marquer le rappel">
 <!ENTITY selectDateBelow "Selectionnez une date:">
+<!ENTITY Time "Heure du rappel:">
+<!ENTITY Hour "heure(s)">
+<!ENTITY Min "minute(s).">

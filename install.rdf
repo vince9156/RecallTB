@@ -4,7 +4,7 @@
     <em:id>comete@recall.net</em:id>
     <em:type>2</em:type>
     <em:name>RecallTB</em:name>
-    <em:version>0.1</em:version>
+    <em:version>0.3</em:version>
     <em:creator>Vincent</em:creator>
     <em:contributor></em:contributor>
     <em:description>Marque un message et rappelle à l'utilisateur de répondre à c message en temps et en heure.</em:description>

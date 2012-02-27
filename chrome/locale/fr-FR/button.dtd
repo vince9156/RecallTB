@@ -1,10 +1,10 @@
-<!ENTITY addFollowUp "Ajouter un rappel">
+﻿<!ENTITY addFollowUp "Ajouter un rappel">
 <!ENTITY followUp "Suivre">
 <!ENTITY followUpLater "Suivre plus tard">
 <!ENTITY markDone "Enlever le rappel">
 <!ENTITY markAsDone "Marquer comme fait">
 <!ENTITY cleanUnsuedTags "Nettoyer les etiquettes inutilisees">
-<!ENTITY viewToday "Vue d'aujourd'hui">
+<!ENTITY viewAtDate "Vue a une date fixee">
 <!ENTITY viewEmailToday "Vue des emails a suivre aujourd'hui">
 <!ENTITY viewPending "Voir l'attente">
 <!ENTITY viewPendingFollowUp "Voir l'attente de suivis">

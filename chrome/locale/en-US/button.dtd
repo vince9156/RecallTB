@@ -4,7 +4,7 @@
 <!ENTITY markDone "Mark Done">
 <!ENTITY markAsDone "Mark as Done">
 <!ENTITY cleanUnsuedTags "Clean Unused Tags">
-<!ENTITY viewToday "View Today">
+<!ENTITY viewAtDate "View Today">
 <!ENTITY viewEmailToday "View emails to follow up today">
 <!ENTITY viewPending "View Pending">
 <!ENTITY viewPendingFollowUp "View Pending Follow Ups">

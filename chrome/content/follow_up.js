@@ -44,17 +44,14 @@ Components.utils.import("resource://gre/modules/FileUtils.jsm");
 		elem = elem.split('|');
 		var date = new Date(elem[0]);
 		var days = elem[1];
-		
+		if(elem[1]!="")
+			date.setDate(date.getDate()+parseInt(elem[1]));
     	
 		//create the tag.
         var d;
         if(this.isValidDate(date) == true)
     	{
-			alert(elem[1]);
-			if(elem[1]!="")
-				d = "Follow Up: " + (date.getDate()+parseInt(elem[1])) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
-			else
-				d = "Follow Up: " + date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
+			d = "Follow Up: " + date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
 			if (!recall_ext.tagService.getKeyForTag(d))
         	{
         		recall_ext.tagService.addTag(d, "#33CC00", "");
@@ -153,48 +150,53 @@ Components.utils.import("resource://gre/modules/FileUtils.jsm");
   This function shows the follow ups for a particular date as passed it.
   It makes use of the Thunderbird Quick Filter Bar UI to display these emails.
   */
-  viewFollowUp : function(date)
+  viewFollowUp : function(date, nbJ)
   {
   	//find the tag for the particular date.
-  	var d = "Follow Up: " + date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
-    var key = recall_ext.findTagKey(d);
-
-    var qfb = document.getElementById("qfb-show-filter-bar");
-    var qfb_status = qfb.checked;
-    if (!qfb_status) 
-    {
-    	qfb.click();
-    }
-    
-    var qfb_tag = document.getElementById("qfb-tags");
-    var qfb_tag_status = qfb_tag.checked;
-    if (!qfb_tag_status) 
-    {
-    	qfb_tag.click();
-    }
-
-	//set timeout for the UI elements to load.
-    setTimeout(
-		function () 
+	var d = "Follow Up: " + date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString();
+	var key = recall_ext.findTagKey(d);
+	
+	if (key == null){
+		alert("Pas de rappels à la date:" +date.getDate().toString() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear().toString());
+	}
+    else{
+		var qfb = document.getElementById("qfb-show-filter-bar");
+		var qfb_status = qfb.checked;
+		if (!qfb_status) 
 		{
-        	var tagButton = document.getElementById("qfb-tag-" + key);
-            //if no such tag element is found.
-            if (tagButton == null) 
-            {
-                this.promptService.alert(null, "Follow Up", "You have no mails to follow up!");
-                ////reset the button state.
-                if (!qfb_tag_status)
-                {
-                    qfb_tag.click();
-                }
-                if (!qfb_status) {
-                    qfb.click();
-                }
-            }
-			//show the filtered emails.
-            tagButton.click();
-        }, 1000)
-  },
+			qfb.click();
+		}
+		
+		var qfb_tag = document.getElementById("qfb-tags");
+		var qfb_tag_status = qfb_tag.checked;
+		if (!qfb_tag_status) 
+		{
+			qfb_tag.click();
+		}
+
+		//set timeout for the UI elements to load.
+		setTimeout(
+			function () 
+			{
+				var tagButton = document.getElementById("qfb-tag-" + key);
+				//if no such tag element is found.
+				if (tagButton == null) 
+				{
+					this.promptService.alert(null, "Follow Up", "You have no mails to follow up!");
+					////reset the button state.
+					if (!qfb_tag_status)
+					{
+						qfb_tag.click();
+					}
+					if (!qfb_status) {
+						qfb.click();
+					}
+				}
+				//show the filtered emails.
+				tagButton.click();
+			}, 1000)
+	}
+ },
   
   /*
   This funtion show all the pending mails using the Thunderbird
@@ -318,7 +320,8 @@ Components.utils.import("resource://gre/modules/FileUtils.jsm");
     var allTags = recall_ext.tagService.getAllTags({});
     for (var i = 0; i < allTags.length; i++) 
     {
-    	if (allTags[i].tag == tagName) 
+    	//alert(allTags[i].tag +"=="+ tagName);
+		if (allTags[i].tag == tagName) 
         {
             res = allTags[i].key;
             break;
@@ -511,11 +514,24 @@ follow_up_tb = {
     {
     	recall_ext.markDone();
     },
-    /*This is the function on the View today click.*/
+    /*This is the function on the View selected date click.*/
     3: function () 
     {
-        var date = new Date();
-        recall_ext.viewFollowUp(date);
+        //open the datepicker window.
+		var params = { out: null };
+		window.openDialog("chrome://recall_ext/content/date_dialog.xul", "", "modal", params).focus();
+		
+		//if a date was selected by the user.
+		if (params.out != null) 
+		{
+			var elem = params.out;
+			elem = elem.split('|');
+			var date = new Date(elem[0]);
+			var days = elem[1];
+			if(elem[1]!="")
+				date.setDate(date.getDate()+parseInt(elem[1]));
+		}
+		recall_ext.viewFollowUp(date);
     },
     /*This is the function on the View Pending click.*/
     4: function () 
